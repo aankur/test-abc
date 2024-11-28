@@ -24,9 +24,10 @@ class NattuglaAlarmScheduleFactoryTest {
   }
 
   @Test
-  void shouldFailParseAndCreate() throws JsonProcessingException {
-    ScheduleAllowListContainer scheduleAllowListContainer = NattuglaAlarmScheduleFactory.parseAndCreate(
+  void shouldFailParseAndCreate() {
+    assertThrows(Exception.class, () ->  NattuglaAlarmScheduleFactory.parseAndCreate(
       "{\"allowList\": [{\"type\": \"V1-WEEK\", \"data\": null}]}"
-    );
+    ),
+      "'data' is required");
   }
 }
